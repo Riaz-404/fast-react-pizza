@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "proxy": "https://fast-react-pizza-backend.onrender.com",
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "react": "^18.3.1",
