@@ -7,7 +7,7 @@ const User = () => {
   const user = useLoaderData();
   return (
     <div className="px-4 py-3">
-      <h2 className="mt-7 text-2xl font-semibold">Welcome, {user.userName}</h2>
+      <h2 className="mt-7 text-2xl font-semibold">Welcome, {user.name}</h2>
 
       <div className="text-center text-xl px-6 py-5">Order List</div>
 

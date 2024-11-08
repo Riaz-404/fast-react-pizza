@@ -1,6 +1,6 @@
-// const API_URL = "http://localhost:8080/api";
+const API_URL = "http://localhost:8080/api";
 // const API_URL = "https://react-fast-pizza-api.onrender.com/api";
-const API_URL = "https://fast-react-pizza-backend.onrender.com/api";
+// const API_URL = "https://fast-react-pizza-backend.onrender.com/api";
 
 export async function getMenu() {
   const res = await fetch(`${API_URL}/menu`);

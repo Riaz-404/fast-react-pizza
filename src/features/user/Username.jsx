@@ -2,12 +2,12 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Username() {
-  const userName = useSelector((state) => state.user.userName);
+  const { _id, userName } = useSelector((state) => state.user);
 
-  if (!userName) return null;
+  if (!_id) return null;
 
   return (
-    <Link to="/user">
+    <Link to={`/user/${_id}`}>
       <div className="text-sm font-semibold">{userName}</div>
     </Link>
   );
