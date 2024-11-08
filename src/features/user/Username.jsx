@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Username() {
   const userName = useSelector((state) => state.user.userName);
@@ -6,7 +7,9 @@ function Username() {
   if (!userName) return null;
 
   return (
-    <div className="hidden text-sm font-semibold md:block">{userName}</div>
+    <Link to="/user">
+      <div className="text-sm font-semibold">{userName}</div>
+    </Link>
   );
 }
 

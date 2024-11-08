@@ -1,4 +1,5 @@
-const API_URL = "https://react-fast-pizza-api.onrender.com/api";
+const API_URL = "http://localhost:8080/api";
+// const API_URL = "https://react-fast-pizza-api.onrender.com/api";
 
 export async function getMenu() {
   const res = await fetch(`${API_URL}/menu`);
@@ -20,6 +21,7 @@ export async function getOrder(id) {
 
 export async function createOrder(newOrder) {
   try {
+    console.log(newOrder);
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
       body: JSON.stringify(newOrder),
@@ -30,9 +32,28 @@ export async function createOrder(newOrder) {
 
     if (!res.ok) throw Error();
     const { data } = await res.json();
+    console.log(data);
     return data;
   } catch {
     throw Error("Failed creating your order");
+  }
+}
+
+export async function getUser(params) {
+  try {
+    const res = await fetch(`${API_URL}/user/login`, {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    if (!res.ok) throw Error();
+    const { data } = await res.json();
+    return data;
+  } catch {
+    throw Error("Failed fetching user");
   }
 }
 

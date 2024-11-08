@@ -28,10 +28,12 @@ export const fetchAddress = createAsyncThunk(
 );
 
 const initialState = {
+  _id: "",
   userName: "",
   status: "idle",
   position: {},
   address: "",
+  orderList: [],
   error: "",
 };
 
@@ -41,6 +43,12 @@ const userSlice = createSlice({
   reducers: {
     updateName(state, action) {
       state.userName = action.payload;
+    },
+    updateId(state, action) {
+      state._id = action.payload;
+    },
+    updateOrderList(state, action) {
+      state.orderList = action.payload;
     },
   },
   extraReducers: (builder) =>
@@ -60,6 +68,6 @@ const userSlice = createSlice({
       }),
 });
 
-export const { updateName } = userSlice.actions;
+export const { updateName, updateId, updateOrderList } = userSlice.actions;
 
 export default userSlice.reducer;

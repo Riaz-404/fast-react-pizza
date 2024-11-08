@@ -1,14 +1,17 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import Home from './ui/Home';
-import Error from './ui/Error';
-import Menu, { loader as menuLoader } from './features/menu/Menu';
-import Cart from './features/cart/Cart';
+import Home from "./ui/Home";
+import Error from "./ui/Error";
+import Menu, { loader as menuLoader } from "./features/menu/Menu";
+import Cart from "./features/cart/Cart";
 import CreateOrder, {
   action as createOrderAction,
-} from './features/order/CreateOrder';
-import Order, { loader as orderLoader } from './features/order/Order';
-import AppLayout from './ui/AppLayout';
+} from "./features/order/CreateOrder";
+import Order, { loader as orderLoader } from "./features/order/Order";
+import AppLayout from "./ui/AppLayout";
+import Login from "./features/login/login";
+import User from "./features/user/user";
+import PrivateRoute from "./features/user/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -17,23 +20,46 @@ const router = createBrowserRouter([
 
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/menu',
+        path: "/user",
+        element: (
+          <PrivateRoute>
+            <User />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/user/login",
+        element: <Login />,
+      },
+      {
+        path: "/menu",
         element: <Menu />,
         loader: menuLoader,
         errorElement: <Error />,
       },
-      { path: '/cart', element: <Cart /> },
       {
-        path: '/order/new',
-        element: <CreateOrder />,
+        path: "/cart",
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/order/new",
+        element: (
+          <PrivateRoute>
+            <CreateOrder />
+          </PrivateRoute>
+        ),
         action: createOrderAction,
       },
       {
-        path: '/order/:orderId',
+        path: "/order/:orderId",
         element: <Order />,
         loader: orderLoader,
         errorElement: <Error />,

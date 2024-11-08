@@ -41,7 +41,9 @@ function CreateOrder() {
 
   return (
     <div className="px-4 py-6">
-      <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
+      <h2 className="mb-8 text-xl font-semibold">
+        Ready to order? Let&apos;s go!
+      </h2>
 
       {/* <Form method="POST" action="/order/new"> */}
       <Form method="POST">
@@ -160,11 +162,14 @@ export async function action({ request }) {
 
   // If everything is okay, create new order and redirect
   const newOrder = await createOrder(order);
+  console.log(order);
 
   // Do NOT overuse
   store.dispatch(clearCart());
 
-  return redirect(`/order/${newOrder.id}`);
+  const searchParam = newOrder.id || newOrder.orderId;
+
+  return redirect(`/order/${searchParam}`);
 }
 
 export default CreateOrder;
