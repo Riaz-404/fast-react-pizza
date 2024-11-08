@@ -40,7 +40,19 @@ export async function createOrder(newOrder) {
   }
 }
 
-export async function getUser(params) {
+export async function getUser(id) {
+  try {
+    const res = await fetch(`${API_URL}/user/${id}`);
+    if (!res.ok) throw Error(`Couldn't find user ${id}`);
+
+    const { data } = await res.json();
+    return data;
+  } catch {
+    throw Error("Failed fetching user");
+  }
+}
+
+export async function loginUser(params) {
   try {
     const res = await fetch(`${API_URL}/user/login`, {
       method: "POST",
@@ -54,7 +66,7 @@ export async function getUser(params) {
     const { data } = await res.json();
     return data;
   } catch {
-    throw Error("Failed fetching user");
+    throw Error("Failed login user");
   }
 }
 

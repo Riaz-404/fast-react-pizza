@@ -11,7 +11,7 @@ import Order, { loader as orderLoader } from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
 import Login from "./features/login/Login";
 import PrivateRoute from "./features/user/PrivateRoute";
-import User from "./features/user/User";
+import User, { loader as userLoader } from "./features/user/User";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/user",
+        path: "/user/:id",
+        loader: userLoader,
         element: (
           <PrivateRoute>
             <User />

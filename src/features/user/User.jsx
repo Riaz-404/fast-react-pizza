@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
 import Button from "../../ui/Button";
 import OrderListItem from "./OrderListItem";
+import { getUser } from "../../services/apiRestaurant";
+import { useLoaderData } from "react-router-dom";
 
 const User = () => {
-  const user = useSelector((state) => state.user);
+  const user = useLoaderData();
   return (
     <div className="px-4 py-3">
       <h2 className="mt-7 text-2xl font-semibold">Welcome, {user.userName}</h2>
@@ -24,4 +25,10 @@ const User = () => {
     </div>
   );
 };
+
+export async function loader({ params }) {
+  const user = await getUser(params.id);
+  return user;
+}
+
 export default User;

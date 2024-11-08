@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
-import { getUser } from "../../services/apiRestaurant";
+import { loginUser } from "../../services/apiRestaurant";
 import { useDispatch } from "react-redux";
 import { updateId, updateName, updateOrderList } from "../user/userSlice";
 
@@ -14,18 +14,18 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await getUser({ phone: phoneNumber })
+    await loginUser({ phone: phoneNumber })
       .then((result) => {
         dispatch(updateId(result._id));
         dispatch(updateName(result.name));
         dispatch(updateOrderList(result.orderList));
+        navigate(`/user/${result._id}`);
       })
       .catch((err) => {
         throw Error(err);
       })
       .finally(() => {
         setPhoneNumber("");
-        navigate("/user");
       });
   };
 
