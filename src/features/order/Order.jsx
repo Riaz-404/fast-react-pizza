@@ -74,7 +74,11 @@ function Order() {
         )}
         <p className="font-bold flex items-center justify-between">
           <span>To pay on delivery:</span>
-          <span> {formatCurrency(orderPrice + priorityPrice)} </span>
+          <span>
+            {priorityPrice
+              ? formatCurrency(orderPrice + priorityPrice)
+              : formatCurrency(orderPrice)}
+          </span>
         </p>
       </div>
     </div>
