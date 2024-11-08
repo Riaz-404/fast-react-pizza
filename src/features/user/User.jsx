@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import LinkButton from "../../ui/LinkButton";
 import Button from "../../ui/Button";
 import OrderListItem from "./OrderListItem";
 
@@ -21,7 +20,6 @@ const User = () => {
         <Button to="/menu" type="primary">
           Order pizzas
         </Button>
-
       </div>
     </div>
   );

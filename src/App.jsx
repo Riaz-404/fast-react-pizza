@@ -9,9 +9,9 @@ import CreateOrder, {
 } from "./features/order/CreateOrder";
 import Order, { loader as orderLoader } from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
-import Login from "./features/login/login";
-import User from "./features/user/user";
+import Login from "./features/login/Login";
 import PrivateRoute from "./features/user/PrivateRoute";
+import User from "./features/user/User";
 
 const router = createBrowserRouter([
   {
